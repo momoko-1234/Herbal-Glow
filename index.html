@@ -289,20 +289,27 @@
       }
     ];
 
-  function calculateScore() {
-      const answers = document.querySelectorAll('input[type="radio"]:checked');
-      if (answers.length < 16) {
-        alert('請完成所有題目再送出！');
-        return;
-      }
-
-      let total = 0;
-      answers.forEach(a => {
-        let val = parseInt(a.value);
-        const name = a.name;
-
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+ function calculateScore() {
+    const answers = document.querySelectorAll('input[type="radio"]:checked');
+    if (answers.length < 16) {
+      alert('請完成所有題目再送出！');
+      return;
     }
-  </script>
+
+    let total = 0;
+    answers.forEach(a => {
+      total += parseInt(a.value);
+    });
+
+    console.log("✅ Total score:", total);
+    const resultContainer = document.getElementById('result');
+    const card = resultCards.find(c => total >= c.min && total <= c.max);
+    resultContainer.innerHTML =
+      `<h3 style='color:#d1394c;'>你的氣血指數：${total} 分</h3>` +
+      (card ? card.html : '<p>⚠️ 無對應結果。</p>');
+
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }
+</script>
 </body>
 </html>
