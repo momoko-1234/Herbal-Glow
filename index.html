@@ -289,27 +289,16 @@
       }
     ];
 
- function calculateScore() {
-    const answers = document.querySelectorAll('input[type="radio"]:checked');
-    if (answers.length < 16) {
-      alert('請完成所有題目再送出！');
-      return;
-    }
-
-    let total = 0;
-    answers.forEach(a => {
-      total += parseInt(a.value);
-    });
-
-    console.log("✅ Total score:", total);
-    const resultContainer = document.getElementById('result');
-    const card = resultCards.find(c => total >= c.min && total <= c.max);
-    resultContainer.innerHTML =
-      `<h3 style='color:#d1394c;'>你的氣血指數：${total} 分</h3>` +
-      (card ? card.html : '<p>⚠️ 無對應結果。</p>');
-
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+function displayResult(total) {
+  const resultContainer = document.getElementById("result");
+  let card = resultCards.find(c => total >= c.min && total <= c.max);
+  if (!card) {
+    resultContainer.innerHTML = `<p>⚠️ 請確認測驗題目與分數範圍是否完整。</p>`;
+  } else {
+    resultContainer.innerHTML = `<h3 style='text-align:center;'>你的氣血指數：${total} 分</h3>` + card.html;
   }
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+}
 </script>
 </body>
 </html>
