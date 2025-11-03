@@ -285,21 +285,26 @@
             <p>🍵 推薦：高吸收鐵、維生素B群、紅棗桂圓濃縮飲</p>
             <p>💡 建議：可諮詢營養師或中醫師，搭配紅棗桂圓＋鐵質＋B群配方。</p>
             <img src="https://drive.google.com/uc?export=view&id=1ChukjouMSX3BE7FNzDgF5F379dZcJ0wB" alt="嚴重氣血不足型" style="width:80%;border-radius:12px;margin-top:15px;">
-           </div>
-    </div>`
-  }
-];
+           </div>`
+      }
+    ];
 
-function displayResult(total) {
-  const resultContainer = document.getElementById("result");
-  let card = resultCards.find(c => total >= c.min && total <= c.max);
-  if (!card) {
-    resultContainer.innerHTML = `<p>⚠️ 請確認測驗題目與分數範圍是否完整。</p>`;
-  } else {
-    resultContainer.innerHTML = `<h3 style='text-align:center;'>你的氣血指數：${total} 分</h3>` + card.html;
-  }
-  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-}
-</script>
+    function calculateScore() {
+      const answers = document.querySelectorAll('input[type="radio"]:checked');
+      if (answers.length < 16) {
+        alert('請完成所有題目再送出！');
+        return;
+      }
+
+      let total = 0;
+      answers.forEach(a => total += parseInt(a.value));
+
+      const resultContainer = document.getElementById('result');
+      const card = resultCards.find(c => total >= c.min && total <= c.max);
+      resultContainer.innerHTML = `<h3 style='color:#d1394c;'>你的氣血指數：${total} 分</h3>` + (card ? card.html : '<p>無對應結果。</p>');
+
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
