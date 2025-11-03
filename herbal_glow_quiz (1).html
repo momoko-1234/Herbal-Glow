@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herbal Glow 氣色自我測驗</title>
+  <style>
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: linear-gradient(180deg, #fff5f5 0%, #ffe8e8 100%);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      background-color: #d1394c;
+      color: white;
+      padding: 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+    main {
+      max-width: 850px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 40px 50px;
+    }
+    h2 {
+      color: #d1394c;
+      border-left: 6px solid #d1394c;
+      padding-left: 10px;
+      margin-top: 0;
+    }
+    .question {
+      margin-bottom: 25px;
+    }
+    .question p {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    label {
+      display: block;
+      margin: 4px 0;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    label:hover {
+      background-color: #fff0f0;
+    }
+    button {
+      background: linear-gradient(90deg, #d1394c 0%, #f45d7e 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      display: block;
+      margin: 30px auto;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    #result {
+      text-align: center;
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 12px;
+      background: #fff3f3;
+      border: 1px solid #f2cfcf;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #888;
+      font-size: 14px;
+    }
+    @media (max-width: 600px) {
+      main { padding: 20px; }
+      header h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌸 Herbal Glow 氣色自我測驗 🌸</h1>
+    <p>了解你的氣血狀態，找回專屬的紅潤光采</p>
+  </header>
+  <main>
+    <h2>請依照下列題目作答：</h2>
+    <form id="quizForm">
+      <!-- A. 生理徵象 -->
+      <div class="question">
+        <p>1️⃣ 我經常感覺手腳冰冷。</p>
+        <label><input type="radio" name="q1" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q1" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q1" value="3"> 有點同意</label>
+        <label><input type="radio" name="q1" value="4"> 非常同意</label>
+      </div>
+      <div class="question">
+        <p>2️⃣ 我常覺得臉色偏白或蠟黃。</p>
+        <label><input type="radio" name="q2" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q2" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q2" value="3"> 有點同意</label>
+        <label><input type="radio" name="q2" value="4"> 非常同意</label>
+      </div>
+      <div class="question">
+        <p>3️⃣ 我容易感到頭暈或疲倦。</p>
+        <label><input type="radio" name="q3" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q3" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q3" value="3"> 有點同意</label>
+        <label><input type="radio" name="q3" value="4"> 非常同意</label>
+      </div>
+      <div class="question">
+        <p>4️⃣ 我早上起床時容易沒精神。</p>
+        <label><input type="radio" name="q4" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q4" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q4" value="3"> 有點同意</label>
+        <label><input type="radio" name="q4" value="4"> 非常同意</label>
+      </div>
+      <!-- B. 外觀氣色 -->
+      <div class="question">
+        <p>5️⃣ 我覺得自己最近氣色不佳或臉色黯沉。</p>
+        <label><input type="radio" name="q5" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q5" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q5" value="3"> 有點同意</label>
+        <label><input type="radio" name="q5" value="4"> 非常同意</label>
+      </div>
+      <div class="question">
+        <p>6️⃣ 我常被朋友說看起來「沒氣色」。</p>
+        <label><input type="radio" name="q6" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q6" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q6" value="3"> 有點同意</label>
+        <label><input type="radio" name="q6" value="4"> 非常同意</label>
+      </div>
+      <div class="question">
+        <p>7️⃣ 我的嘴唇容易乾裂或顏色淡。</p>
+        <label><input type="radio" name="q7" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q7" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q7" value="3"> 有點同意</label>
+        <label><input type="radio" name="q7" value="4"> 非常同意</label>
+      </div>
+      <!-- C. 飲食營養 -->
+      <div class="question">
+        <p>8️⃣ 我平時攝取足夠的深綠色蔬菜與紅肉。</p>
+        <label><input type="radio" name="q8" value="4"> 完全不同意</label>
+        <label><input type="radio" name="q8" value="3"> 有點不同意</label>
+        <label><input type="radio" name="q8" value="2"> 有點同意</label>
+        <label><input type="radio" name="q8" value="1"> 非常同意</label>
+      </div>
+      <div class="question">
+        <p>9️⃣ 我有定期攝取富含鐵或維生素C的食物（如紅棗、黑棗、柑橘類）。</p>
+        <label><input type="radio" name="q9" value="4"> 完全不同意</label>
+        <label><input type="radio" name="q9" value="3"> 有點不同意</label>
+        <label><input type="radio" name="q9" value="2"> 有點同意</label>
+        <label><input type="radio" name="q9" value="1"> 非常同意</label>
+      </div>
+      <div class="question">
+        <p>🔟 我有偏食或節食的習慣。</p>
+        <label><input type="radio" name="q10" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q10" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q10" value="3"> 有點同意</label>
+        <label><input type="radio" name="q10" value="4"> 非常同意</label>
+      </div>
+      <!-- D. 情緒與生活習慣 -->
+      <div class="question">
+        <p>11️⃣ 我最近經常熬夜或睡眠品質不好。</p>
+        <label><input type="radio" name="q11" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q11" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q11" value="3"> 有點同意</label>
+        <label><input type="radio" name="q11" value="4"> 非常同意</label>
+      </div>
+      <div class="question">
+        <p>12️⃣ 我長期壓力大或焦慮。</p>
+        <label><input type="radio" name="q12" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q12" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q12" value="3"> 有點同意</label>
+        <label><input type="radio" name="q12" value="4"> 非常同意</label>
+      </div>
+      <div class="question">
+        <p>13️⃣ 我運動頻率不足（少於每週2次）。</p>
+        <label><input type="radio" name="q13" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q13" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q13" value="3"> 有點同意</label>
+        <label><input type="radio" name="q13" value="4"> 非常同意</label>
+      </div>
+      <!-- E. 綜合自評 -->
+      <div class="question">
+        <p>14️⃣ 我覺得最近體力下降。</p>
+        <label><input type="radio" name="q14" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q14" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q14" value="3"> 有點同意</label>
+        <label><input type="radio" name="q14" value="4"> 非常同意</label>
+      </div>
+      <div class="question">
+        <p>15️⃣ 我的皮膚看起來乾燥或缺乏光澤。</p>
+        <label><input type="radio" name="q15" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q15" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q15" value="3"> 有點同意</label>
+        <label><input type="radio" name="q15" value="4"> 非常同意</label>
+      </div>
+      <div class="question">
+        <p>16️⃣ 我覺得需要透過補充品來改善氣色。</p>
+        <label><input type="radio" name="q16" value="1"> 完全不同意</label>
+        <label><input type="radio" name="q16" value="2"> 有點不同意</label>
+        <label><input type="radio" name="q16" value="3"> 有點同意</label>
+        <label><input type="radio" name="q16" value="4"> 非常同意</label>
+      </div>
+
+      <button type="button" onclick="calculateScore()">送出結果</button>
+    </form>
+    <div id="result"></div>
+  </main>
+  <footer>
+    © 2025 Herbal Glow | Designed for Well-being & Beauty
+  </footer>
+  <script>
+    function calculateScore() {
+      const answers = document.querySelectorAll('input[type="radio"]:checked');
+      if (answers.length < 16) {
+        alert('請完成所有題目再送出！');
+        return;
+      }
+      let total = 0;
+      answers.forEach(a => total += parseInt(a.value));
+
+      let message = '';
+      if (total >= 56) message = '🌹 氣血充盈、氣色佳\\n維持均衡飲食與規律作息，保持紅潤光澤！';
+      else if (total >= 44) message = '🌸 輕度氣血偏弱\\n建議補充含鐵與維C食物，如紅棗、葡萄汁或桂圓飲。';
+      else if (total >= 32) message = '🌼 中度氣血不足\\n注意休息並補養，可考慮紅棗桂圓或補鐵配方。';
+      else message = '🌙 明顯氣血虛弱\\n建議諮詢營養師或中醫師，進行調理與補氣。';
+
+      document.getElementById('result').innerHTML = `<h3>你的氣血指數：${total} 分</h3><p>${message.replace(/\\n/g,'<br>')}</p>`;
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
