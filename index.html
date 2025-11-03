@@ -289,7 +289,7 @@
       }
     ];
 
-    function calculateScore() {
+  function calculateScore() {
       const answers = document.querySelectorAll('input[type="radio"]:checked');
       if (answers.length < 16) {
         alert('請完成所有題目再送出！');
@@ -301,42 +301,25 @@
         let val = parseInt(a.value);
         const name = a.name;
 
-  // 🔸 反向題與分數邏輯
-  function calculateScore() {
-    const answers = document.querySelectorAll('input[type="radio"]:checked');
-    if (answers.length < 16) {
-      alert('請完成所有題目再送出！');
-      return;
+        // 反向題處理
+        if (["q8","q9"].includes(name)) {
+          // 已在HTML反轉，不動
+        } else if (["q10","q11","q12","q13","q14","q15","q16"].includes(name)) {
+          val = 5 - val;
+        }
+        total += val;
+      });
+
+      console.log("✅ Total score:", total);
+
+      const resultContainer = document.getElementById('result');
+      const card = resultCards.find(c => total >= c.min && total <= c.max);
+      resultContainer.innerHTML =
+        `<h3 style='color:#d1394c;'>你的氣血指數：${total} 分</h3>` +
+        (card ? card.html : '<p>⚠️ 無對應結果（分數超出範圍）。</p>');
+
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
-
-    let total = 0;
-    answers.forEach(a => {
-      let val = parseInt(a.value);
-      const name = a.name;
-      if (["q8","q9"].includes(name)) {
-        // 已在 HTML 反向，不動
-      } else if (["q10","q11","q12","q13","q14","q15","q16"].includes(name)) {
-        val = 5 - val;
-      }
-      total += val;
-    });
-
-    console.log("✅ Total score:", total);
-    const resultContainer = document.getElementById('result');
-
-    // 🔸 四種結果卡
-    const resultCards = [
-      { min: 65, max: 80, html: `<div style="padding:20px;background:#fffef8;border-radius:16px;">☀️ 活力滿滿元氣型（${total}分）<br>維持紅潤光澤！</div>` },
-      { min: 50, max: 64, html: `<div style="padding:20px;background:#fff9f9;border-radius:16px;">🌸 輕度氣血偏弱型（${total}分）<br>適度補鐵＋維C！</div>` },
-      { min: 35, max: 49, html: `<div style="padding:20px;background:#fff9f9;border-radius:16px;">🌼 中度氣血不足型（${total}分）<br>紅棗桂圓鐵質配方推薦。</div>` },
-      { min: 20, max: 34, html: `<div style="padding:20px;background:#fff8f8;border-radius:16px;">🌙 嚴重氣血不足型（${total}分）<br>建議專業調理。</div>` }
-    ];
-
-    const card = resultCards.find(c => total >= c.min && total <= c.max);
-    resultContainer.innerHTML = `<h3 style='color:#d1394c;'>你的氣血指數：${total} 分</h3>` + 
-      (card ? card.html : '<p>⚠️ 無對應結果。</p>');
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  }
-</script>
+  </script>
 </body>
 </html>
