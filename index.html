@@ -306,22 +306,31 @@
       }
     ];
 
-    function calculateScore() {
-      const answers = document.querySelectorAll('input[type="radio"]:checked');
-      if (answers.length < 16) {
-        alert('請完成所有題目再送出！');
-        return;
-      }
+   function calculateScore() {
+  const answers = document.querySelectorAll('input[type="radio"]:checked');
+  if (answers.length < 16) {
+    alert('請完成所有題目再送出！');
+    return;
+  }
 
-      let total = 0;
-      answers.forEach(a => total += parseInt(a.value));
+  let total = 0;
+  answers.forEach(a => {
+    let val = parseInt(a.value);
+    const name = a.name;
 
-      const resultContainer = document.getElementById('result');
-      const card = resultCards.find(c => total >= c.min && total <= c.max);
-      resultContainer.innerHTML = `<h3 style='color:#d1394c;'>你的氣血指數：${total} 分</h3>` + (card ? card.html : '<p>無對應結果。</p>');
-
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    // 反向題處理：第8、9題（正向題已在HTML顛倒了）、第10題、11~13、14~16都是「越高越虛」
+    if (["q8","q9"].includes(name)) {
+      // 已經在 HTML 裡反轉，不動
+    } else if (["q10","q11","q12","q13","q14","q15","q16"].includes(name)) {
+      // 倒分（1→4, 2→3, 3→2, 4→1）
+      val = 5 - val;
     }
-  </script>
-</body>
-</html>
+    total += val;
+  });
+
+  const resultContainer = document.getElementById('result');
+  const card = resultCards.find(c => total >= c.min && total <= c.max);
+  resultContainer.innerHTML = `<h3 style='color:#d1394c;'>你的氣血指數：${total} 分</h3>` + (card ? card.html : '<p>無對應結果。</p>');
+
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
