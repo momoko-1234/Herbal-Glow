@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>氣血狀態結果</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: linear-gradient(180deg, #fff5f5 0%, #ffe8e8 100%);
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  header {
+    background: #d1394c;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  main {
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  canvas {
+    max-width: 380px;
+    margin: 30px auto;
+  }
+  .result-card img {
+    width: 80%;
+    border-radius: 12px;
+    margin-top: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+  }
+</style>
+</head>
+
+<body>
+<header>
+  <h1>🌸 Herbal Glow 氣血狀態分析 🌸</h1>
+</header>
+
+<main>
+  <h2 id="scoreText"></h2>
+
+  <canvas id="radarChart"></canvas>
+
+  <div id="resultCard"></div>
+</main>
+
+<footer>
+  © 2025 Herbal Glow
+</footer>
+
+<script>
+  // 取得分數參數
+  const urlParams = new URLSearchParams(window.location.search);
+  const score = Number(urlParams.get("score"));
+
+  document.getElementById("scoreText").innerText = `你的氣血指數：${score} 分`;
+
+  // 類型資料
+  const types = [
+    {
+      min: 50, max: 64,
+      name: "☀️ 活力滿滿元氣型",
+      color: "#d17d1f",
+      data: [4,4,5,4,3],
+      html: `
+        <div class="result-card" style="background:#fffef8;border:1px solid #f7e8b8;border-radius:16px;padding:24px;">
+          <h2 style="color:#d17d1f;">☀️ 活力滿滿元氣型</h2>
+          <p>代表分數：50–64分　約25%的人與你同屬此類型</p>
+          <p>關鍵字：氣血充盈 ✨、活力穩定、光澤透亮型</p>
+          <img src="https://i.ibb.co/0jvCXHrx/image.jpg">
+        </div>`
+    },
+    {
+      min: 40, max: 49,
+      name: "🌸 輕度氣血偏弱型",
+      color: "#c44c5e",
+      data: [3,3,3,3,3],
+      html: `
+        <div class="result-card" style="background:#fff9f9;border:1px solid #f3dcdc;border-radius:16px;padding:24px;">
+          <h2 style="color:#c44c5e;">🌸 輕度氣血偏弱型</h2>
+          <p>關鍵字：輕度氣血偏弱、偶爾疲倦、需要日常調理</p>
+          <img src="https://i.ibb.co/JwSXDkT7/image.jpg">
+        </div>`
+    },
+    {
+      min: 30, max: 39,
+      name: "🌼 中度氣血不足型",
+      color: "#b22d3d",
+      data: [2,2,3,2,2],
+      html: `
+        <div class="result-card" style="background:#fff9f9;border:1px solid:#f3dcdc;border-radius:16px;padding:24px;">
+          <h2 style="color:#b22d3d;">🌼 中度氣血不足型</h2>
+          <p>關鍵字：中度氣血不足、手腳冰冷、需重點補養</p>
+          <img src="https://i.ibb.co/b5GNkR1C/image.jpg">
+        </div>`
+    },
+    {
+      min: 16, max: 29,
+      name: "🌙 嚴重氣血不足型",
+      color: "#a32332",
+      data: [1,1,1,2,2],
+      html: `
+        <div class="result-card" style="background:#fff8f8;border:1px solid:#f3d0d0;border-radius:16px;padding:24px;">
+          <h2 style="color:#a32332;">🌙 嚴重氣血不足型</h2>
+          <p>關鍵字：氣血虛弱、代謝低、需深度修復</p>
+          <img src="https://i.ibb.co/tMgR4bv4/image.jpg">
+        </div>`
+    }
+  ];
+
+  // 找到對應範圍
+  const result = types.find(t => score >= t.min && score <= t.max);
+  document.getElementById("resultCard").innerHTML = result.html;
+
+  // 畫雷達圖
+  new Chart(document.getElementById("radarChart"), {
+    type: "radar",
+    data: {
+      labels: ["精神力", "代謝力", "循環力", "抵抗力", "睡眠品質"],
+      datasets: [{
+        label: result.name,
+        data: result.data,
+        fill: true,
+        backgroundColor: result.color + "33",
+        borderColor: result.color,
+        pointBackgroundColor: result.color
+      }]
+    },
+    options: {
+      scales: {
+        r: {
+          min: 0,
+          max: 5,
+          ticks: { stepSize: 1 }
+        }
+      },
+      plugins: { legend: { display: false } }
+    }
+  });
+</script>
+
+</body>
+</html>
