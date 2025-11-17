@@ -72,57 +72,147 @@
 
   // 類型資料
   const types = [
-    {
-      min: 50, max: 64,
-      name: "☀️ 活力滿滿元氣型",
-      color: "#d17d1f",
-      data: [4,4,5,4,3],
-      html: `
-        <div class="result-card" style="background:#fffef8;border:1px solid #f7e8b8;border-radius:16px;padding:24px;">
-          <h2 style="color:#d17d1f;">☀️ 活力滿滿元氣型</h2>
-          <p>代表分數：50–64分　約25%的人與你同屬此類型</p>
-          <p>關鍵字：氣血充盈 ✨、活力穩定、光澤透亮型</p>
-          <img src="https://i.ibb.co/0jvCXHrx/image.jpg">
-        </div>`
-    },
-    {
-      min: 40, max: 49,
-      name: "🌸 輕度氣血偏弱型",
-      color: "#c44c5e",
-      data: [3,3,3,3,3],
-      html: `
-        <div class="result-card" style="background:#fff9f9;border:1px solid #f3dcdc;border-radius:16px;padding:24px;">
-          <h2 style="color:#c44c5e;">🌸 輕度氣血偏弱型</h2>
-          <p>關鍵字：輕度氣血偏弱、偶爾疲倦、需要日常調理</p>
-          <img src="https://i.ibb.co/JwSXDkT7/image.jpg">
-        </div>`
-    },
-    {
-      min: 30, max: 39,
-      name: "🌼 中度氣血不足型",
-      color: "#b22d3d",
-      data: [2,2,3,2,2],
-      html: `
-        <div class="result-card" style="background:#fff9f9;border:1px solid:#f3dcdc;border-radius:16px;padding:24px;">
-          <h2 style="color:#b22d3d;">🌼 中度氣血不足型</h2>
-          <p>關鍵字：中度氣血不足、手腳冰冷、需重點補養</p>
-          <img src="https://i.ibb.co/b5GNkR1C/image.jpg">
-        </div>`
-    },
-    {
-      min: 16, max: 29,
-      name: "🌙 嚴重氣血不足型",
-      color: "#a32332",
-      data: [1,1,1,2,2],
-      html: `
-        <div class="result-card" style="background:#fff8f8;border:1px solid:#f3d0d0;border-radius:16px;padding:24px;">
-          <h2 style="color:#a32332;">🌙 嚴重氣血不足型</h2>
-          <p>關鍵字：氣血虛弱、代謝低、需深度修復</p>
-          <img src="https://i.ibb.co/tMgR4bv4/image.jpg">
-        </div>`
-    }
-  ];
+  /* ☀️ 50–64 元氣型 */
+  {
+    min: 50, max: 64,
+    name: "☀️ 活力滿滿元氣型",
+    color: "#d17d1f",
+    data: [4,4,5,4,3],
+    html: `
+      <div class="result-card" style="background:#fffef8;border:1px solid #f7e8b8;border-radius:16px;padding:24px;text-align:left;">
+        <h2 style="color:#d17d1f;text-align:center;">☀️ 活力滿滿元氣型</h2>
 
+        <p><strong>代表分數：</strong>50–64 分　約 25% 的人屬此型</p>
+        <p><strong>關鍵字：</strong>氣血充盈 ✨、活力穩定、光澤透亮</p>
+
+        <ul style="list-style:none;line-height:1.8;padding:0;margin-top:10px;">
+          <li>精神力：★★★★☆</li>
+          <li>代謝力：★★★★☆</li>
+          <li>循環力：★★★★★</li>
+          <li>抵抗力：★★★★☆</li>
+          <li>睡眠品質：★★★☆☆</li>
+        </ul>
+
+        <p style="margin-top:12px;">💬 氣血流暢、紅潤有神，是走到哪都自帶氣場的人。</p>
+
+        <p>🍵 <strong>推薦：</strong>維生素C、膠原蛋白、小分子鐵</p>
+
+        <p>💡 <strong>建議：</strong>保持規律作息、良好飲食，維持亮麗光澤！</p>
+
+        <div style="text-align:center;margin-top:15px;">
+          <img src="https://i.ibb.co/0jvCXHrx/image.jpg"
+               alt="活力滿滿元氣型"
+               style="width:80%;max-width:420px;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+      </div>`
+  },
+
+  /* 🌸 40–49 輕度氣血偏弱 */
+  {
+    min: 40, max: 49,
+    name: "🌸 輕度氣血偏弱型",
+    color: "#c44c5e",
+    data: [3,3,3,3,3],
+    html: `
+      <div class="result-card" style="background:#fff9f9;border:1px solid #f3dcdc;border-radius:16px;padding:24px;text-align:left;">
+        <h2 style="color:#c44c5e;text-align:center;">🌸 輕度氣血偏弱型</h2>
+
+        <p><strong>代表分數：</strong>40–49 分　約 30% 的人屬此型</p>
+        <p><strong>關鍵字：</strong>輕度氣血偏弱、偶爾疲倦、需要日常調理</p>
+
+        <ul style="list-style:none;line-height:1.8;padding:0;margin-top:10px;">
+          <li>精神力：★★★☆☆</li>
+          <li>代謝力：★★★☆☆</li>
+          <li>循環力：★★★☆☆</li>
+          <li>抵抗力：★★★☆☆</li>
+          <li>睡眠品質：★★★☆☆</li>
+        </ul>
+
+        <p style="margin-top:12px;">💬 偶爾臉色偏淡、需要小小提氣補養。</p>
+
+        <p>🍵 <strong>推薦：</strong>「Herbal Glow Gummy」紅棗＋葡萄配方</p>
+
+        <p>💡 <strong>建議：</strong>補鐵＋維C，搭配草本軟糖，讓氣色更明亮！</p>
+
+        <div style="text-align:center;margin-top:15px;">
+          <img src="https://i.ibb.co/JwSXDkT7/image.jpg"
+               alt="輕度氣血偏弱型"
+               style="width:80%;max-width:420px;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+      </div>`
+  },
+
+  /* 🌼 30–39 中度氣血不足 */
+  {
+    min: 30, max: 39,
+    name: "🌼 中度氣血不足型",
+    color: "#b22d3d",
+    data: [2,2,3,2,2],
+    html: `
+      <div class="result-card" style="background:#fff9f9;border:1px solid #f3dcdc;border-radius:16px;padding:24px;text-align:left;">
+        <h2 style="color:#b22d3d;text-align:center;">🌼 中度氣血不足型</h2>
+
+        <p><strong>代表分數：</strong>30–39 分　約 20% 的人屬此型</p>
+        <p><strong>關鍵字：</strong>手腳冰冷、氣血弱、循環差</p>
+
+        <ul style="list-style:none;line-height:1.8;padding:0;margin-top:10px;">
+          <li>精神力：★★☆☆☆</li>
+          <li>代謝力：★★☆☆☆</li>
+          <li>循環力：★★☆☆☆</li>
+          <li>抵抗力：★★★☆☆</li>
+          <li>睡眠品質：★★☆☆☆</li>
+        </ul>
+
+        <p style="margin-top:12px;">💬 容易疲倦，氣血循環偏弱，需要更積極的補養。</p>
+
+        <p>🍵 <strong>推薦：</strong>紅棗桂圓鐵質配方、女性暖養軟糖</p>
+
+        <p>💡 <strong>建議：</strong>補鐵＋助眠三合一保養，幫助循環活絡、提升代謝。</p>
+
+        <div style="text-align:center;margin-top:15px;">
+          <img src="https://i.ibb.co/b5GNkR1C/image.jpg"
+               alt="中度氣血不足型"
+               style="width:80%;max-width:420px;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+      </div>`
+  },
+
+  /* 🌙 16–29 嚴重氣血不足 */
+  {
+    min: 16, max: 29,
+    name: "🌙 嚴重氣血不足型",
+    color: "#a32332",
+    data: [1,1,1,2,2],
+    html: `
+      <div class="result-card" style="background:#fff8f8;border:1px solid #f3d0d0;border-radius:16px;padding:24px;text-align:left;">
+        <h2 style="color:#a32332;text-align:center;">🌙 嚴重氣血不足型</h2>
+
+        <p><strong>代表分數：</strong>16–29 分　約 10% 的人屬此型</p>
+        <p><strong>關鍵字：</strong>氣血虛弱、代謝低、需深度修復</p>
+
+        <ul style="list-style:none;line-height:1.8;padding:0;margin-top:10px;">
+          <li>精神力：★☆☆☆☆</li>
+          <li>代謝力：★☆☆☆☆</li>
+          <li>循環力：★☆☆☆☆</li>
+          <li>抵抗力：★★☆☆☆</li>
+          <li>睡眠品質：★★☆☆☆</li>
+        </ul>
+
+        <p style="margin-top:12px;">💬 身體處於明顯虛弱期，氣血補不上、代謝偏弱。</p>
+
+        <p>🍵 <strong>推薦：</strong>高吸收鐵、維生素B群、紅棗桂圓濃縮飲</p>
+
+        <p>💡 <strong>建議：</strong>可諮詢營養師或中醫師，進行深度調理與補氣補血。</p>
+
+        <div style="text-align:center;margin-top:15px;">
+          <img src="https://i.ibb.co/tMgR4bv4/image.jpg"
+               alt="嚴重氣血不足型"
+               style="width:80%;max-width:420px;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+      </div>`
+  }
+];
+   
   // 找到對應範圍
   const result = types.find(t => score >= t.min && score <= t.max);
   document.getElementById("resultCard").innerHTML = result.html;
