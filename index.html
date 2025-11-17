@@ -327,20 +327,18 @@
     ];
 
     function calculateScore() {
-      const answers = document.querySelectorAll('input[type="radio"]:checked');
-      if (answers.length < 16) {
-        alert('請完成所有題目再送出！');
-        return;
-      }
+  const answers = document.querySelectorAll('input[type="radio"]:checked');
+  if (answers.length < 16) {
+    alert('請完成所有題目再送出！');
+    return;
+  }
 
-      let total = 0;
-      answers.forEach(a => total += parseInt(a.value));
+  let total = 0;
+  answers.forEach(a => total += parseInt(a.value));
 
-      const resultContainer = document.getElementById('result');
-      const card = resultCards.find(c => total >= c.min && total <= c.max);
-      resultContainer.innerHTML = `<h3 style='color:#d1394c;'>你的氣血指數：${total} 分</h3>` + (card ? card.html : '<p>無對應結果。</p>');
+  // 跳轉到結果頁
+  window.location.href = `result.html?score=${total}`;
 
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
   </script>
 </body>
